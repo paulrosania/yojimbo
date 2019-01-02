@@ -3316,7 +3316,7 @@ namespace yojimbo
 
     // read macros corresponding to each serialize_*. useful when you want separate read and write functions.
 
-    #define read_bits( stream, value, bits )                                                \
+    #define yojimbo_read_bits( stream, value, bits )                                        \
     do                                                                                      \
     {                                                                                       \
         yojimbo_assert( bits > 0 );                                                         \
@@ -3329,7 +3329,7 @@ namespace yojimbo
         value = uint32_value;                                                               \
     } while (0)
 
-    #define read_int( stream, value, min, max )                                             \
+    #define yojimbo_read_int( stream, value, min, max )                                     \
         do                                                                                  \
         {                                                                                   \
             yojimbo_assert( min < max );                                                    \
@@ -3345,25 +3345,25 @@ namespace yojimbo
             }                                                                               \
         } while (0)
 
-    #define read_bool( stream, value ) read_bits( stream, value, 1 )
+    #define yojimbo_read_bool( stream, value ) yojimbo_read_bits( stream, value, 1 )
 
-    #define read_float                  serialize_float
-    #define read_uint32                 serialize_uint32
-    #define read_uint64                 serialize_uint64
-    #define read_double                 serialize_double
-    #define read_bytes                  serialize_bytes
-    #define read_string                 serialize_string
-    #define read_align                  serialize_align
-    #define read_check                  serialize_check
-    #define read_object                 serialize_object
-    #define read_address                serialize_address
-    #define read_int_relative           serialize_int_relative
-    #define read_ack_relative           serialize_ack_relative
-    #define read_sequence_relative      serialize_sequence_relative
+    #define yojimbo_read_float                  serialize_float
+    #define yojimbo_read_uint32                 serialize_uint32
+    #define yojimbo_read_uint64                 serialize_uint64
+    #define yojimbo_read_double                 serialize_double
+    #define yojimbo_read_bytes                  serialize_bytes
+    #define yojimbo_read_string                 serialize_string
+    #define yojimbo_read_align                  serialize_align
+    #define yojimbo_read_check                  serialize_check
+    #define yojimbo_read_object                 serialize_object
+    #define yojimbo_read_address                serialize_address
+    #define yojimbo_read_int_relative           serialize_int_relative
+    #define yojimbo_read_ack_relative           serialize_ack_relative
+    #define yojimbo_read_sequence_relative      serialize_sequence_relative
 
     // write macros corresponding to each serialize_*. useful when you want separate read and write functions for some reason.
 
-    #define write_bits( stream, value, bits )                                               \
+    #define yojimbo_write_bits( stream, value, bits )                                       \
         do                                                                                  \
         {                                                                                   \
             yojimbo_assert( bits > 0 );                                                     \
@@ -3375,7 +3375,7 @@ namespace yojimbo
             }                                                                               \
         } while (0)
 
-    #define write_int( stream, value, min, max )                                            \
+    #define yojimbo_write_int( stream, value, min, max )                                    \
         do                                                                                  \
         {                                                                                   \
             yojimbo_assert( min < max );                                                    \
@@ -3386,19 +3386,19 @@ namespace yojimbo
                 return false;                                                               \
         } while (0)
 
-    #define write_float                 serialize_float
-    #define write_uint32                serialize_uint32
-    #define write_uint64                serialize_uint64
-    #define write_double                serialize_double
-    #define write_bytes                 serialize_bytes
-    #define write_string                serialize_string
-    #define write_align                 serialize_align
-    #define write_check                 serialize_check
-    #define write_object                serialize_object
-    #define write_address               serialize_address
-    #define write_int_relative          serialize_int_relative
-    #define write_ack_relative          serialize_ack_relative
-    #define write_sequence_relative     serialize_sequence_relative
+    #define yojimbo_write_float                 serialize_float
+    #define yojimbo_write_uint32                serialize_uint32
+    #define yojimbo_write_uint64                serialize_uint64
+    #define yojimbo_write_double                serialize_double
+    #define yojimbo_write_bytes                 serialize_bytes
+    #define yojimbo_write_string                serialize_string
+    #define yojimbo_write_align                 serialize_align
+    #define yojimbo_write_check                 serialize_check
+    #define yojimbo_write_object                serialize_object
+    #define yojimbo_write_address               serialize_address
+    #define yojimbo_write_int_relative          serialize_int_relative
+    #define yojimbo_write_ack_relative          serialize_ack_relative
+    #define yojimbo_write_sequence_relative     serialize_sequence_relative
 
     /**
         Interface for an object that knows how to read, write and measure how many bits it would take up in a bit stream.
